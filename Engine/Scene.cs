@@ -50,7 +50,12 @@ namespace Engine
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+
             world.FullDrawOn(e.Graphics);
+            foreach (GameObject g in world.AllObjects)
+            {
+                g.FullDrawOn(e.Graphics);
+            }
         }
 
         private void steppingTimer_Tick(object sender, EventArgs e)
@@ -62,6 +67,10 @@ namespace Engine
                 tally.RegisterUpdate();
                 tally.RegisterInstances(world.AllChildren.LongCount());
                 world.FullUpdate(delta, true);
+                foreach (GameObject g in world.AllObjects)
+                {
+                    g.FullUpdate(delta, true);
+                }
                 lastStep = now;
                 Refresh();
             }

@@ -340,7 +340,8 @@ namespace Engine
         {
             if (Parent == null && !world) return;
             Update(deltaTime);
-            children.ToList().ForEach((m) => m.FullUpdate(deltaTime));
+
+            //children.ToList().ForEach((m) => m.FullUpdate(deltaTime));
         }
 
         internal void FullDrawOn(Graphics graphics)
@@ -348,7 +349,8 @@ namespace Engine
             if (!visible) return;
             DrawOn(graphics);
             //DrawBoundsOn(graphics);
-            children.ForEach((m) => m.FullDrawOn(graphics));
+
+            //children.ForEach((m) => m.FullDrawOn(graphics));
         }
 
         private void DrawBoundsOn(Graphics graphics)
