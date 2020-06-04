@@ -16,6 +16,7 @@ namespace Game
 
         private int shipIndex;
         private EnemyBehavior behavior;
+        private Image shipImage;
         
         public EnemyShip(int shipIndex, EnemyBehavior behavior)
         {
@@ -23,6 +24,7 @@ namespace Game
             this.behavior = behavior;
             
             Visible = false;
+            shipImage = LoadImage();
         }
 
         public PlayerShip Player
@@ -60,7 +62,7 @@ namespace Game
 
         public override void DrawOn(Graphics graphics)
         {
-            graphics.DrawImage(LoadImage(), Bounds);
+            graphics.DrawImage(shipImage, Bounds);
         }
 
         private Image LoadImage()
