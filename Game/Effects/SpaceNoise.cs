@@ -17,6 +17,8 @@ namespace Game
         float scale;
         bool flipX;
         bool flipY;
+        Bitmap img;
+
 
         public SpaceNoise(Image image, float speed, float scale, bool flipX, bool flipY)
         {
@@ -25,8 +27,8 @@ namespace Game
             this.flipX = flipX;
             this.flipY = flipY;
             this.image = image;
-
             Extent = new SizeF(image.Width * scale, image.Height * scale);
+            img = new Bitmap(image, new Size(Width.RoundedToInt(), Height.RoundedToInt()));
         }
 
         public override void Update(float deltaTime)
@@ -64,7 +66,7 @@ namespace Game
             {
                 for (int y1 = y; y1 <= Parent.Bottom; y1 += h)
                 {
-                    var img = new Bitmap(image, new Size(w, h));
+                    //var img = new Bitmap(image, new Size(w, h));
                     if (flipX) { img.RotateFlip(RotateFlipType.RotateNoneFlipX); }
                     if (flipY) { img.RotateFlip(RotateFlipType.RotateNoneFlipY); }
                     graphics.DrawImage(img, new Point(x1, y1));
