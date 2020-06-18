@@ -28,6 +28,7 @@ namespace Game
 
         public override void Update(float deltaTime)
         {
+
             X -= speed * deltaTime;
             Visible = true;
         }

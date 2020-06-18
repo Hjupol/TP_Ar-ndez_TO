@@ -333,12 +333,18 @@ namespace Engine
 
         public virtual void Update(float deltaTime)
         {
+           
             // Do nothing. Subclasses should override
         }
 
         internal void FullUpdate(float deltaTime, bool world = false)
         {
             if (Parent == null && !world) return;
+            if (X < -5)
+            {
+                visible = false;
+                Delete();
+            }
             Update(deltaTime);
 
             //children.ToList().ForEach((m) => m.FullUpdate(deltaTime));

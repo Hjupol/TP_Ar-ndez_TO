@@ -20,7 +20,10 @@ namespace Game
         public override void Update(EnemyShip ship, float deltaTime)
         {
             ship.X -= speed * deltaTime;
-            ship.CenterY = (float)(function(ship.CenterX / ship.Parent.Width) / 2 + 0.5) * ship.Parent.Height;
+            if (ship.Parent != null)
+            {
+                ship.CenterY = (float)(function(ship.CenterX / ship.Parent.Width) / 2 + 0.5) * ship.Parent.Height;
+            }
         }
     }
 }
