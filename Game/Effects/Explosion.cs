@@ -14,6 +14,13 @@ namespace Game
     {
         private static Random rnd = new Random();
 
+        private System.IO.Stream soudEffect1 = Properties.Resources.explosion1;
+        private System.IO.Stream soudEffect2 = Properties.Resources.explosion2;
+
+        public static GameObject worldWH;
+        public static Pen pen;
+
+
         public static void Burst(GameObject world, PointF point, 
             int amount = 2000, 
             int minMagnitude = 50,
@@ -22,6 +29,8 @@ namespace Game
             float deltaSize = 2,
             float deltaAlpha = -2)
         {
+            worldWH = world;
+            pen = new Pen(Color.White);
             for (int i = 0; i < amount; i++)
             {
                 float angle = rnd.Next(0, 360);
@@ -57,6 +66,11 @@ namespace Game
 
         public override void Update(float deltaTime)
         {
+            if (Y < worldWH.Y || Y>worldWH.Y+Height || X>worldWH.X+Width)
+            {
+                Delete();
+            }
+
             PointF center = Center;
             Width += deltaSize * deltaTime;
             Height += deltaSize * deltaTime;
@@ -71,7 +85,7 @@ namespace Game
         {
             int a = (alpha * 255).RoundedToInt().MinMax(255, 0);
             int g = (255 - a).MinMax(200, 50);
-            Pen pen = new Pen(Color.FromArgb(a, 255, g, 0));
+            pen.Color = Color.FromArgb(a, 255, g, 0);
             graphics.FillRectangle(pen.Brush, Bounds);
         }
     }
