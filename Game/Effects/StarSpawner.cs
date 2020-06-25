@@ -14,6 +14,8 @@ namespace Game
         private Random rnd = new Random();
         private bool firstFrame = true;
 
+        private System.Drawing.Bitmap starImage = Properties.Resources.star;
+
         public override void Update(float deltaTime)
         {
             if (firstFrame)
@@ -40,7 +42,7 @@ namespace Game
 
         public void SpawnStar()
         {
-            Star star = new Star(Properties.Resources.star, rnd.Next(300));
+            Star star = new Star(starImage, rnd.Next(300));
             star.Center = Center;
             Parent.AddChildBack(star);
 

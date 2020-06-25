@@ -34,6 +34,8 @@ namespace Engine.Utils
             List<Image> pieces = new List<Image>();
             int rows = original.Width / size.Width;
             int cols = original.Height / size.Height;
+
+
             for (int j = 0; j < cols; j++)
             {
                 for (int i = 0; i < rows; i++)

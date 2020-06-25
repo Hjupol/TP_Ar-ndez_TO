@@ -347,15 +347,21 @@ namespace Engine
             }
             Update(deltaTime);
 
+            //foreach (GameObject c in children)
+            //{
+            //    FullUpdate(deltaTime);
+            //}
+
             //children.ToList().ForEach((m) => m.FullUpdate(deltaTime));
         }
 
         internal void FullDrawOn(Graphics graphics)
         {
             if (!visible) return;
+            
+            
             DrawOn(graphics);
             //DrawBoundsOn(graphics);
-
             //children.ForEach((m) => m.FullDrawOn(graphics));
         }
 

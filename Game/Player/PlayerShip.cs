@@ -25,11 +25,13 @@ namespace Game
         private bool shieldActivated = false;
         private float speed = MIN_SPEED;
 
+        private Image shipImage;
+
 
         public PlayerShip(int shipIndex)
         {
             this.shipIndex = shipIndex;
-            LoadImage();
+            shipImage=LoadImage();
 
             EventHandler.KeyDown += OnKeyDown;
             EventHandler.KeyUp += OnKeyUp;
@@ -177,7 +179,7 @@ namespace Game
         
         public override void DrawOn(Graphics graphics)
         {
-            graphics.DrawImage(LoadImage(), Bounds);
+            graphics.DrawImage(shipImage, Bounds);
         }
         
         private Image LoadImage()
